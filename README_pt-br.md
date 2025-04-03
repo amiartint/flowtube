@@ -13,7 +13,7 @@
 ## Funcionalidades
 
 ### Interface Moderna e Intuitiva
-- **Gerenciamento de Canais**: Interface com abas para adicionar e remover canais com nomes amigáveis
+- **Gerenciamento de Canais**: Interface com abas para adicionar e remover canais com nomes amigáveis, incluindo visualização estilizada e botões de remoção individuais
 - **Sistema de Paginação**: Navegação fácil entre conjuntos de vídeos
 - **Design Responsivo**: Adapta-se a diferentes tamanhos de tela
 
@@ -82,9 +82,9 @@
 
 3. Configure seus canais:
    - Na aba "Adicionar Canal" da barra lateral, insira a URL do canal do YouTube
-   - Opcionalmente, adicione um nome amigável para o canal
+   - O sistema tentará obter automaticamente o nome do canal a partir da API do YouTube
    - Clique em "Adicionar Canal"
-   - Gerencie seus canais na aba "Gerenciar Canais"
+   - Gerencie seus canais na aba "Gerenciar Canais", onde você pode visualizar todos os canais adicionados com uma interface estilizada e remover canais individualmente com um clique
 
 4. Configure palavras-chave e preferências:
    - Adicione palavras-chave para filtrar vídeos (uma por linha)
@@ -127,7 +127,7 @@ FlowTube/
 
 ## Como Funciona
 
-1. **Gerenciamento de Canais**: O aplicativo permite adicionar e remover canais do YouTube usando uma interface com abas, armazenando tanto a URL quanto um nome amigável para cada canal.
+1. **Gerenciamento de Canais**: O aplicativo permite adicionar e remover canais do YouTube usando uma interface com abas, armazenando tanto a URL quanto o nome oficial do canal obtido da API do YouTube. A interface de gerenciamento apresenta os canais em um layout estilizado com botões individuais para remoção.
 
 2. **Obtenção de Dados**: O aplicativo usa a API do YouTube para buscar os vídeos mais recentes dos canais configurados.
 

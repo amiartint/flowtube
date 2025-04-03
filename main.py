@@ -59,7 +59,7 @@ def load_config():
         "channel_ids": {},  # Armazenar IDs de canais
         "max_results": 5,   # Número padrão de vídeos por canal
         "language": "pt",   # Idioma padrão
-        "channel_info": {}  # Informações adicionais dos canais
+        "channel_info": []  # Informações adicionais dos canais (como array)
     }
     
     # Garantir que o diretório existe
@@ -76,10 +76,56 @@ def load_config():
                     config['channel_ids'] = {}
                 if 'max_results' not in config:
                     config['max_results'] = 5
-                if 'channel_info' not in config:
-                    config['channel_info'] = {}
                 if 'language' not in config:
                     config['language'] = 'pt'
+                
+                # Garantir que channel_info seja um array
+                if 'channel_info' not in config or not isinstance(config['channel_info'], list):
+                    config['channel_info'] = []
+                
+                # Migrar canais de channels para channel_info se channel_info estiver vazio
+                if not config['channel_info'] and 'channels' in config and config['channels']:
+                    for channel_url in config['channels']:
+                        channel_id = config.get('channel_ids', {}).get(channel_url)
+                        
+                        # Extrair um nome mais amigável do canal
+                        if '@' in channel_url:
+                            # Extrair o nome após o @ e antes de qualquer barra
+                            channel_name = channel_url.split('@')[-1].split('/')[0]
+                        else:
+                            # Usar a URL como fallback
+                            channel_name = channel_url
+                        
+                        # Tentar obter o nome real do canal da API se tivermos um ID válido
+                        try:
+                            if channel_id and os.getenv('YOUTUBE_API_KEY'):
+                                youtube_temp = googleapiclient.discovery.build(
+                                    API_SERVICE_NAME, API_VERSION, 
+                                    developerKey=os.getenv('YOUTUBE_API_KEY'),
+                                    cache_discovery=False
+                                )
+                                
+                                request = youtube_temp.channels().list(
+                                    part="snippet",
+                                    id=channel_id
+                                )
+                                response = request.execute()
+                                
+                                if response.get('items'):
+                                    channel_name = response['items'][0]['snippet']['title']
+                        except Exception:
+                            # Se falhar, continuar com o nome extraído da URL
+                            pass
+                        
+                        config['channel_info'].append({
+                            'url': channel_url,
+                            'name': channel_name,
+                            'id': channel_id
+                        })
+                    
+                    # Salvar a configuração atualizada
+                    with open(config_file_path, 'w', encoding='utf-8') as config_file:
+                        json.dump(config, config_file, ensure_ascii=False, indent=4)
                 
                 return config
         else:
@@ -330,20 +376,55 @@ def main():
         if not config.get('channel_info', []):
             st.info(get_text('no_channels', st.session_state.lang))
         else:
+            # Adicionar CSS para melhorar a aparência dos canais
+            st.markdown("""
+            <style>
+            .channel-container {
+                background-color: rgba(49, 51, 63, 0.2);
+                border-radius: 10px;
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            .channel-name {
+                font-weight: bold;
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+            .channel-url {
+                color: #4da6ff;
+                font-size: 12px;
+                word-break: break-all;
+                margin-bottom: 10px;
+            }
+            .remove-button {
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+            
             # Exibir lista de canais com opção de remoção
             for i, channel in enumerate(config['channel_info']):
-                col1, col2 = st.columns([5, 1])
-                with col1:
-                    st.write(f"**{channel.get('name', channel['url'])}**")
-                    st.caption(channel['url'])
-                with col2:
-                    if st.button(get_text('remove', st.session_state.lang), key=f"remove_{i}"):
-                        config['channel_info'].pop(i)
-                        config['channels'] = [c['url'] for c in config['channel_info']]
-                        save_config()
-                        st.success(get_text('channel_removed', st.session_state.lang))
-                        st.rerun()
-                st.divider()
+                # Usar container para melhor espaçamento
+                with st.container():
+                    # Usar HTML para formatar melhor o nome e URL do canal
+                    st.markdown(f"""
+                    <div class="channel-container">
+                        <div class="channel-name">{channel.get('name', channel['url'])}</div>
+                        <div class="channel-url">{channel['url']}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
+                    # Botão de remover centralizado abaixo do container
+                    col1, col2, col3 = st.columns([1, 2, 1])
+                    with col2:
+                        if st.button(get_text('remove', st.session_state.lang), key=f"remove_{i}"):
+                            config['channel_info'].pop(i)
+                            config['channels'] = [c['url'] for c in config['channel_info']]
+                            save_config()
+                            st.success(get_text('channel_removed', st.session_state.lang))
+                            st.rerun()
     
     # Palavras-chave
     st.sidebar.subheader(get_text('keywords', st.session_state.lang))

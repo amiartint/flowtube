@@ -11,7 +11,7 @@
 ## Features
 
 ### Modern and Intuitive Interface
-- **Channel Management**: Interface with tabs to add and remove channels with friendly names
+- **Channel Management**: Interface with tabs to add and remove channels with friendly names, including stylized display and individual removal buttons
 - **Pagination System**: Easy navigation between sets of videos
 - **Responsive Design**: Adapts to different screen sizes
 
@@ -80,9 +80,9 @@
 
 3. Configure your channels:
    - In the "Add Channel" tab of the sidebar, enter the YouTube channel URL
-   - Optionally, add a friendly name for the channel
+   - The system will automatically try to get the channel name from the YouTube API
    - Click on "Add Channel"
-   - Manage your channels in the "Manage Channels" tab
+   - Manage your channels in the "Manage Channels" tab, where you can view all added channels with a stylized interface and remove channels individually with a click
 
 4. Configure keywords and preferences:
    - Add keywords to filter videos (one per line)
@@ -125,7 +125,7 @@ FlowTube/
 
 ## How It Works
 
-1. **Channel Management**: The application allows adding and removing YouTube channels using a tabbed interface, storing both the URL and a friendly name for each channel.
+1. **Channel Management**: The application allows adding and removing YouTube channels using a tabbed interface, storing both the URL and the official channel name obtained from the YouTube API. The management interface presents the channels in a stylized layout with individual buttons for removal.
 
 2. **Data Retrieval**: The application uses the YouTube API to fetch the most recent videos from configured channels.
 
