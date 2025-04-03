@@ -6,6 +6,9 @@
 __original/
 __backup/
 
+# Arquivos de desenvolvimento
+melhorias_sugeridas.md
+
 # Arquivos de cache do Python
 __pycache__/
 *.py[cod]
