@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/flowtube.png" alt="FlowTube Logo" width="600">
+  <img src="public/logo_flowtube.png" alt="FlowTube Logo" width="600">
 </p>
 
 **FlowTube** é um aplicativo web que cria um feed personalizado de vídeos do YouTube com base nos seus canais favoritos e palavras-chave de interesse.
@@ -10,14 +10,25 @@
 
 ## Funcionalidades
 
-- **Feed Personalizado**: Agregue vídeos de múltiplos canais do YouTube em um único feed
-- **Filtragem por Palavras-chave**: Filtre vídeos com base em palavras-chave específicas
-- **Reprodução Integrada**: Assista aos vídeos diretamente na aplicação em um player responsivo
-- **Configuração Persistente**: Suas preferências são salvas entre sessões
-- **Internacionalização**: Interface disponível em português e inglês
+### Interface Moderna e Intuitiva
 - **Gerenciamento de Canais**: Interface com abas para adicionar e remover canais com nomes amigáveis
 - **Sistema de Paginação**: Navegação fácil entre conjuntos de vídeos
-- **Histórico de Visualização**: Identificação de vídeos já assistidos
+- **Design Responsivo**: Adapta-se a diferentes tamanhos de tela
+
+### Conteúdo Personalizado
+- **Feed Personalizado**: Agregue vídeos de múltiplos canais do YouTube em um único feed
+- **Filtragem por Palavras-chave**: Filtre vídeos com base em palavras-chave específicas
+- **Ordenação por Data**: Vídeos organizados por data de publicação (mais recentes primeiro)
+
+### Experiência de Visualização
+- **Reprodução Integrada**: Assista aos vídeos diretamente na aplicação em um player responsivo
+- **Histórico de Visualização**: Identificação de vídeos já assistidos com indicador visual
+- **Controles Personalizados**: Fácil navegação entre vídeos e player
+
+### Personalização e Persistência
+- **Configuração Persistente**: Suas preferências são salvas entre sessões
+- **Internacionalização**: Interface disponível em português e inglês
+- **Ajuste de Quantidade**: Controle o número de vídeos exibidos por canal
 
 ## Instalação
 
@@ -145,14 +156,22 @@ O sistema de internacionalização do FlowTube é baseado em arquivos JSON. Para
 
 ### Melhorias Futuras
 
-Algumas melhorias que podem ser implementadas no futuro:
+Algumas melhorias planejadas para as próximas versões:
 
-- Suporte para mais idiomas
-- Autenticação OAuth para acessar recursos adicionais da API do YouTube
-- Filtros avançados por categoria, duração ou popularidade
-- Modo escuro/claro
-- Exportação de listas de vídeos
-- Notificações de novos vídeos
+#### Interface e Experiência do Usuário
+- **Tema Escuro/Claro**: Opção para alternar entre modos de visualização
+- **Suporte para mais idiomas**: Expansão do sistema de internacionalização
+- **Visualização de Estatísticas**: Gráficos e dados sobre os canais seguidos
+
+#### Funcionalidades Avançadas
+- **Categorização de Vídeos**: Organização por temas ou tags personalizadas
+- **Exportação de Listas**: Compartilhamento de coleções de vídeos
+- **Lista "Assistir Mais Tarde"**: Marcação de vídeos para visualização futura
+
+#### Melhorias Técnicas
+- **Autenticação OAuth**: Acesso a recursos adicionais da API do YouTube
+- **Carregamento Assíncrono**: Melhor responsividade da interface
+- **Sistema de Notificações**: Alertas sobre novos vídeos dos canais favoritos
 
 ## Contribuição
 
