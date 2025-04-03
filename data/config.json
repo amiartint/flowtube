@@ -1,0 +1,16 @@
+{
+    "channels": [
+        "https://www.youtube.com/@MattVidPro",
+        "https://www.youtube.com/@matthew_berman",
+        "https://www.youtube.com/@mreflow"
+    ],
+    "keywords": [],
+    "channel_ids": {
+        "https://www.youtube.com/@MattVidPro": "UC5Wz4fFacYuON6IKbhSa7Zw",
+        "https://www.youtube.com/@matthew_berman": "UCawZsQWqfGSbCI5yjkdVkTA",
+        "https://www.youtube.com/@mreflow": "UChpleBmo18P08aKCIgti38g"
+    },
+    "max_results": 5,
+    "channel_info": {},
+    "language": "en"
+}
