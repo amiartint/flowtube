@@ -7,6 +7,8 @@
 > Desenvolvido por [Am I Artificial Intelligence](https://ami.digital) | [GitHub](https://github.com/amiartint/flowtube)
 >
 > Inspirado no projeto [YourTubes](https://github.com/jgravelle/YourTubes) de JGravelle.
+>
+> Inspired by JGravelle's [YourTubes](https://github.com/jgravelle/YourTubes) project.
 
 ## Funcionalidades
 
