@@ -2,6 +2,10 @@
 .env
 .env.local
 
+# Diretórios originais e de backup
+__original/
+__backup/
+
 # Arquivos de cache do Python
 __pycache__/
 *.py[cod]
